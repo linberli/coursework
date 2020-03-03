@@ -1,16 +1,19 @@
-def insertion_sort(nums):  
-    # Начнем со второго элемента, так как мы предполагаем, что первый элемент отсортирован
-    for i in range(1, len(nums)):
-        item_to_insert = nums[i]
-        # И сохранить ссылку на индекс предыдущего элемента
+def insert(arr, dim):
+    alg_count = [0, 0]
+
+    for i in range(1, dim):
+        temp = arr[i]
         j = i - 1
-        # Переместить все элементы отсортированного сегмента вперед, если они больше, чем элемент для вставки
-        while j >= 0 and nums[j] > item_to_insert:
-            nums[j + 1] = nums[j]
+        while j >= 0:
+            alg_count[0] += 1
+            if arr[j] > temp:
+                alg_count[1] += 1
+                arr[j + 1] = arr[j]
+                arr[j] = temp
             j -= 1
-        # Вставляем элемент
-        nums[j + 1] = item_to_insert
-# Проверяем, что это работает
-random_list_of_nums = [2, 3, 7, 11, 15, 22, 77, 98, 112, 55, 66, 17, 98, 18, 27, 29, 37, 48, 31, 58]  
-insertion_sort(random_list_of_nums)  
-print(random_list_of_nums)  
+    print(alg_count)
+import random
+arry = [random.randint(0, 1000) for i in range(1000)]
+print(arry)
+insert(arry, len(arry))
+print(arry)
